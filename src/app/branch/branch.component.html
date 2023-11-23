@@ -1,0 +1,56 @@
+
+<!-- branch.component.html -->
+
+<h2>Lista de Sucursales Disponibles</h2>
+
+<button (click)="goToHome()">Volver al Inicio</button>
+<div>
+
+  <button (click)="showCreateForm()">Crear Nueva Sucursal</button>
+</div>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Creation Date</th>
+      <th>Coin ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let branch of branches">
+      <td>{{ branch.id }}</td>
+      <td>{{ branch.code }}</td>
+      <td>{{ branch.description }}</td>
+      <td>{{ branch.address }}</td>
+      <td>{{ branch.creationDate }}</td>
+      <td>{{ branch.coinId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="showForm">
+  <h2>Crear Nueva Sucursal</h2>
+  <form (submit)="createBranch()">
+    <label for="code">Code:</label>
+    <input type="text" id="code" name="code" [(ngModel)]="newBranch.code" required>
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" [(ngModel)]="newBranch.description" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" [(ngModel)]="newBranch.address" required>
+
+    <label for="creationDate">Creation Date:</label>
+    <input type="date" id="creationDate" name="creationDate" [(ngModel)]="newBranch.creationDate" required>
+
+    <label for="coinId">Coin ID:</label>
+    <input type="text" id="coinId" name="coinId" [(ngModel)]="newBranch.coinId" required>
+
+    <button type="submit">Crear</button>
+  </form>
+</div>
